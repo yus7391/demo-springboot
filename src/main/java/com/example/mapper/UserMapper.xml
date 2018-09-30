@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="user_face" property="userFace" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_OICQ" property="userOicq" jdbcType="VARCHAR" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_from" property="userFrom" jdbcType="VARCHAR" />
+    <result column="user_able" property="userAble" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_name, user_password, user_face, user_sex, user_phone, user_OICQ, user_email, 
+    user_from, user_able
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.User" >
+    insert into tb_user (id, user_name, user_password, 
+      user_face, user_sex, user_phone, 
+      user_OICQ, user_email, user_from, 
+      user_able)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{userFace,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, #{userPhone,jdbcType=VARCHAR}, 
+      #{userOicq,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{userFrom,jdbcType=VARCHAR}, 
+      #{userAble,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.User" >
+    insert into tb_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPassword != null" >
+        user_password,
+      </if>
+      <if test="userFace != null" >
+        user_face,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+      <if test="userOicq != null" >
+        user_OICQ,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="userFrom != null" >
+        user_from,
+      </if>
+      <if test="userAble != null" >
+        user_able,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userFace != null" >
+        #{userFace,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userOicq != null" >
+        #{userOicq,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userFrom != null" >
+        #{userFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="userAble != null" >
+        #{userAble,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.User" >
+    update tb_user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userFace != null" >
+        user_face = #{userFace,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userOicq != null" >
+        user_OICQ = #{userOicq,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userFrom != null" >
+        user_from = #{userFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="userAble != null" >
+        user_able = #{userAble,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.User" >
+    update tb_user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      user_face = #{userFace,jdbcType=VARCHAR},
+      user_sex = #{userSex,jdbcType=VARCHAR},
+      user_phone = #{userPhone,jdbcType=VARCHAR},
+      user_OICQ = #{userOicq,jdbcType=VARCHAR},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      user_from = #{userFrom,jdbcType=VARCHAR},
+      user_able = #{userAble,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
