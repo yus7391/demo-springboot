@@ -1,8 +1,10 @@
 package com.example.demospringboot.controller;
 
-import com.example.demospringboot.entity.TbUser;
 import com.example.demospringboot.entity.User;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
